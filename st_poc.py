@@ -6,12 +6,17 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.preprocessing import LabelEncoder
 
 with open('model_lstm.pkl', 'rb') as file:
-    model_lstm = pickle.load(file)
+    file_load = pickle.load(file)
+    model_lstm = file_load['model']
+    label_encoder = file_load['label_encoder']
 
 def predict_category(text):
     text = text.lower()
 
     #tokenize
+    max_features = 5000
+    maxlen = 100
+    tokenizer = Tokenizer(num_words=max_features)
     seq = tokenizer.texts_to_sequences([text])
 
     #padding
