@@ -8,7 +8,7 @@ from sklearn.preprocessing import LabelEncoder
 with open('model_lstm.pkl', 'rb') as file:
     file_load = pickle.load(file)
     model_lstm = file_load['model']
-    label_encoder = file_load['label_encoder']
+    label_encoder = file_load['encoder']
 
 def predict_category(text):
     text = text.lower()
